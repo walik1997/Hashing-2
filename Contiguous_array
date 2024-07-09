@@ -1,0 +1,18 @@
+#time O(N)
+#space O(N)
+class Solution:
+    def findMaxLength(self, nums: list[int]) -> int:
+        a = {}
+        a[0] = -1
+        rsum = 0
+        maxlist = []
+        for i in range(len(nums)):
+            if nums[i] == 1:
+                rsum += 1
+            else:
+                rsum -= 1
+            if rsum not in a:
+                a[rsum] = i
+            else:
+                maxlist.append(i - a[rsum])
+        return max(maxlist) if maxlist else 0

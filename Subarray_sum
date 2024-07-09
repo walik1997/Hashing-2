@@ -1,0 +1,17 @@
+#time O(N)
+#space O(N)
+class Solution:
+    def subarraySum(self, nums: list[int], k: int) -> int:
+        map = {}
+        map[0]=1
+        rsum = 0
+        count = 0
+        for i in range(len(nums)):
+            rsum += nums[i]
+            if rsum - k in map:
+                count += map[rsum - k]
+            if rsum in map:
+                map[rsum] += 1
+            else:
+                map[rsum] = 1
+        return count

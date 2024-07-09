@@ -1,0 +1,17 @@
+#time O(N)
+#space O(N)
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+      a={}
+      counter=0
+      for i in range(len(s)):
+        if s[i] in a.keys():
+            a[s[i]]+=1
+            if a[s[i]]==2:
+                counter+=2
+                del a[s[i]]
+        else:
+            a[s[i]]=1
+      if a:
+        counter+=1    
+      return counter
